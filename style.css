@@ -126,6 +126,49 @@ body {
   border-color: var(--accent-cyan);
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sm {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.btn-outline {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
+}
+
+.btn-outline:hover {
+  background: #f1f5f9;
+  border-color: #0284c7;
+  color: #0284c7;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #0284c7;
+  border: 1.5px solid #0284c7;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  transform: translateY(-1px);
+}
+
 /* Main Layout */
 .main-layout {
   display: grid;

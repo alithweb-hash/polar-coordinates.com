@@ -5,7 +5,7 @@
 
 // --- Global Application State ---
 const state = {
-  r: 1.0,
+  r: 2.0,
   thetaDeg: 30.0, // in degrees
   zoom: 1.0,
   panX: 0,
@@ -761,17 +761,34 @@ function initManualInputs() {
 
   // Export and download buttons
   document.getElementById('downloadPdfBtn').addEventListener('click', () => {
-    window.open('الاحداثيات_القطبية_والديكارتية.pdf', '_blank');
+    const link = document.createElement('a');
+    link.href = 'الاحداثيات_القطبية_والديكارتية.pdf';
+    link.download = 'الاحداثيات_القطبية_والديكارتية.pdf';
+    link.target = '_blank';
+    link.click();
   });
 
   document.getElementById('downloadWordBtn').addEventListener('click', () => {
-    window.location.href = 'الاحداثيات_القطبية_والديكارتية.docx';
+    const link = document.createElement('a');
+    link.href = 'الاحداثيات_القطبية_والديكارتية.docx';
+    link.download = 'الاحداثيات_القطبية_والديكارتية.docx';
+    link.click();
   });
 
   document.getElementById('exportImageBtn').addEventListener('click', () => {
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = canvas.width;
+    exportCanvas.height = canvas.height;
+    const exportCtx = exportCanvas.getContext('2d');
+    
+    // Fill white background so exported PNG is crystal clear
+    exportCtx.fillStyle = '#ffffff';
+    exportCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+    exportCtx.drawImage(canvas, 0, 0);
+    
     const link = document.createElement('a');
     link.download = `polar_plot_r${state.r}_theta${state.thetaDeg}.png`;
-    link.href = canvas.toDataURL('image/png');
+    link.href = exportCanvas.toDataURL('image/png');
     link.click();
   });
 }
